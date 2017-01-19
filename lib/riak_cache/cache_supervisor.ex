@@ -9,7 +9,7 @@ defmodule RiakCache.CacheSupervisor do
   @doc false
   def init([]) do
     children = [
-      worker(:riak_core_vnode_master, [CacheVnode], [id: CacheVnode.Master])
+      worker(:riak_core_vnode_master, [CacheVnode], [id: Module.concat(CacheVnode, Master)])
     ]
 
     supervise(children, [strategy: :one_for_one, max_restarts: 5, max_seconds: 10])
