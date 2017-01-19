@@ -11,15 +11,15 @@ defmodule RiakCache.CacheVnode do
   end
 
   @doc false
-  def handle_handoff_command(msg, sender, state) do
-    {:noreply, state}
-  end
-
-  @doc false
   def handle_command(cmd, sender, state) do
     {:reply, :ok, state}
   end
 
+  @doc false
+  def handle_handoff_command(msg, sender, state) do
+    {:noreply, state}
+  end
+  
   @doc false
   def handoff_starting(target_node, state) do
     {true, state}
