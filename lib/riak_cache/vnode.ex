@@ -1,8 +1,8 @@
-defmodule RiakCache.CacheVnode do
+defmodule RiakCache.Vnode do
   @behaviour :riak_core_vnode
 
   def start_vnode(term) do
-    :riak_core_vnode_master:get_vnode_pid(term, __MODULE__)
+    :riak_core_vnode_master.get_vnode_pid(term, __MODULE__)
   end
 
   @doc false
@@ -19,7 +19,7 @@ defmodule RiakCache.CacheVnode do
   def handle_handoff_command(msg, sender, state) do
     {:noreply, state}
   end
-  
+
   @doc false
   def handoff_starting(target_node, state) do
     {true, state}
@@ -53,6 +53,16 @@ defmodule RiakCache.CacheVnode do
   @doc false
   def delete(state) do
     {:ok, state}
+  end
+
+  @doc false
+  def handle_coverage(req, key_spaces, sender, state) do
+    {:stop, :not_implemented, state}
+  end
+
+  @doc false
+  def handle_exit(pid, reason, state) do
+    {:noreply, state}
   end
 
   @doc false

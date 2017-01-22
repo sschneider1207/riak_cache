@@ -29,6 +29,7 @@ defmodule RiakCache.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:riak_core, git: "https://github.com/project-fifo/riak_core", branch: "fifo-0.9.0"}]
+    #[{:riak_core, git: "https://github.com/basho/riak_core.git", branch: "develop"}]
+    [{:riak_core, "~> 2.2", hex: :riak_core_ng}]
   end
 end

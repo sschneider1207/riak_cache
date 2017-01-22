@@ -1,8 +1,5 @@
 use Mix.Config
 
-config :sasl,
-  errlog_type: :error
-
 config :riak_core,
   web_port: 8098,
   handoff_port: 8099,
@@ -15,6 +12,7 @@ config :riak_core,
   schema_dirs: ['priv']
 
 config :lager,
-  error_logger_hwm: 5000
-
-import_config "#{Mix.env}.exs"
+  error_logger_hwm: 5000,
+  handlers: [
+    lager_console_backend: :debug,
+  ]
